@@ -2,7 +2,8 @@ return {
 	{
 	"windwp/nvim-autopairs",
 	    event = "InsertEnter",
-	    config = true
+	    config = true,
+	    version = "*", -- Use for stability; omit to use `main` branch for the latest features
 	},
 
 	{
@@ -37,20 +38,19 @@ return {
 		{text = "󰌵", texthl = "DiagnosticSignHint"})
 
 	      require("neo-tree").setup({
-		close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 		popup_border_style = "rounded",
 		enable_git_status = true,
 		enable_diagnostics = true,
 		open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
 		sort_case_insensitive = false, -- used when sorting files and directories in the tree
-		sort_function = nil , -- use a custom function for sorting files and directories in the tree 
-		-- sort_function = function (a,b)
-		--       if a.type == b.type then
-		--           return a.path > b.path
-		--       else
-		--           return a.type > b.type
-		--       end
-		--   end , -- this sorts files and directories descendantly
+		sort_function = function (a,b)
+		      if a.type == b.type then
+		          return a.path > b.path
+		      else
+		          return a.type > b.type
+		      end
+		  end , -- this sorts files and directories descendantly
 		default_component_configs = {
 		  container = {
 		    enable_character_fade = true
@@ -328,8 +328,33 @@ return {
 	      })
 
 	      vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
-	    end
+	      vim.keymap.set("n", "<leader>e", ":Neotree float<CR>", { noremap = true, silent = true })
+	    end,
 
 	},
 
+	{
+	    "lukas-reineke/indent-blankline.nvim",
+	    config = function()
+		    require("ibl").setup()
+	    end,
+	},
+	{
+	  "folke/which-key.nvim",
+	  event = "VeryLazy",
+	  opts = {
+	    -- your configuration comes here
+	    -- or leave it empty to use the default settings
+	    -- refer to the configuration section below
+	  },
+	  keys = {
+	    {
+	      "<leader>?",
+	      function()
+		require("which-key").show({ global = false })
+	      end,
+	      desc = "Buffer Local Keymaps (which-key)",
+	    },
+	  },
+	}
 }
