@@ -42,6 +42,14 @@ return {
 		popup_border_style = "rounded",
 		enable_git_status = true,
 		enable_diagnostics = true,
+		window = {
+		    position = "float", -- Ensures the main window opens as a floating window
+		    width = 40,         -- Width of the floating window
+		    mapping_options = {
+		      noremap = true,
+		      nowait = true,
+		    },
+		},
 		open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
 		sort_case_insensitive = false, -- used when sorting files and directories in the tree
 		sort_function = function (a,b)
@@ -202,7 +210,10 @@ return {
 		    ["<"] = "prev_source",
 		    [">"] = "next_source",
 		    ["i"] = "show_file_details",
-		  }
+		      ['e'] = function() vim.api.nvim_exec('Neotree focus filesystem left', true) end,
+		      ['B'] = function() vim.api.nvim_exec('Neotree focus buffers left', true) end,
+		      ['g'] = function() vim.api.nvim_exec('Neotree focus git_status left', true) end,
+			  }
 		},
 		nesting_rules = {},
 		filesystem = {
@@ -275,6 +286,7 @@ return {
 		      ["<C-p>"] = "move_cursor_up",
 		      -- ['<key>'] = function(state, scroll_padding) ... end,
 		    },
+		    position = "float"
 		  },
 
 		  commands = {} -- Add a custom command or override a global one using the same function name
@@ -288,6 +300,7 @@ return {
 		  group_empty_dirs = true, -- when true, empty folders will be grouped together
 		  show_unloaded = true,
 		  window = {
+		    position = "float",
 		    mappings = {
 		      ["bd"] = "buffer_delete",
 		      ["<bs>"] = "navigate_up",
