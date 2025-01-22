@@ -1,3 +1,4 @@
-My neovim config
+#About
 
-# neovim-config
+
+Just me experimenting with neovim and hoping to understand it better!
