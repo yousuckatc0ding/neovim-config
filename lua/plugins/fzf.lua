@@ -16,6 +16,7 @@ return {
         map('n', '<leader>fg', ":lua require('fzf-lua').grep()<CR>", opts)
         map('n', '<leader>fb', ":lua require('fzf-lua').buffers()<CR>", opts)
         map('n', '<leader>lg', ":lua require('fzf-lua').live_grep()<CR>", opts)
+	map('n', '<leader>fs', ":lua require('fzf-lua').grep_curbuf()<CR>", opts)
 
     end,
 }
