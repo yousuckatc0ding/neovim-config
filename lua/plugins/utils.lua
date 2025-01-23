@@ -341,7 +341,11 @@ return {
 	{
 	    "lukas-reineke/indent-blankline.nvim",
 	    config = function()
-		    require("ibl").setup()
+		require("ibl").setup({
+		    exclude = {
+			filetypes = { "dashboard", "dashboard-nvim" }, -- Exclude dashboard filetypes
+		    },
+		})
 	    end,
 	},
 	{
