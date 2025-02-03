@@ -11,9 +11,10 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
+        automatic_installation = true, -- Automatically install missing servers
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = {  "pyright", "lua_ls", "clangd", "rust_analyzer", "zls" }, -- List of servers to ensure installed
+                ensure_installed = {  "pyright", "lua_ls", "clangd", "rust_analyzer", "zls", "html", "marksman", "tailwindcss" }, -- List of servers to ensure installe
             })
         end,
     },
@@ -30,7 +31,7 @@ return {
             local capabilities = cmp_nvim_lsp.default_capabilities()
 
             -- List of servers to configure
-            local servers = { "pyright", "lua_ls", "clangd", "rust_analyzer", "zls"}
+            local servers = { "pyright", "lua_ls", "clangd", "rust_analyzer", "zls", "html", "marksman", "tailwindcss"}
 
             for _, server in ipairs(servers) do
                 lspconfig[server].setup({
