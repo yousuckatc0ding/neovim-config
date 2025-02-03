@@ -317,7 +317,7 @@ return {
 		      ["gr"] = "git_revert_file",
 		      ["gc"] = "git_commit",
 		      ["gp"] = "git_push",
-		      
+
 
 	["gg"] = "git_commit_and_push",
 		      ["o"] = { "show_help", nowait=false, config = { title = "Order by", prefix_key = "o" }},
