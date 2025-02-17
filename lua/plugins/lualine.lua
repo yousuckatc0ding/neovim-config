@@ -4,7 +4,7 @@ return {
   config = function()
     require("lualine").setup({
       options = {
-        theme = "embark", -- Match your colorscheme
+        theme = "kanagawa-wave", -- Match your colorscheme
         section_separators = { left = "", right = "" }, -- Fancy separators
         component_separators = { left = "", right = "" },
         icons_enabled = true, -- Enable icons

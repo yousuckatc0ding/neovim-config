@@ -8,7 +8,7 @@ vim.api.nvim_set_keymap('n', '<leader>srg', ':<C-u>1,$s/', { noremap = true })
 vim.api.nvim_set_option("clipboard","unnamed")
 -- vim.cmd.colorscheme("nordic")
 
-vim.cmd("Copilot disable")
+-- vim.cmd("Copilot disable")
 
 -- Move to the left pane
 vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })

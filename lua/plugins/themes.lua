@@ -1,7 +1,11 @@
 return {
   {
     "rebelot/kanagawa.nvim",
-    version = "*"
+    lazy=false,
+    version = "*",
+    config = function()
+        vim.cmd.colorscheme("kanagawa-wave")
+    end
   },
   {
     "tiagovla/tokyodark.nvim",
@@ -23,9 +27,9 @@ return {
   {
 	  "embark-theme/vim",
 	  as = "embark",
-	  config = function()
-		  vim.cmd.colorscheme("embark")
-	  end
+	  -- config = function()
+	  --  vim.cmd.colorscheme("embark")
+	  -- end
   },
   {
     'bettervim/yugen.nvim',
